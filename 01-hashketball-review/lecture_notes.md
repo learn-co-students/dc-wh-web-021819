@@ -1,6 +1,6 @@
 - explain "Flipped Classroom":  We expect you to see the material before lecture (although not master)
 
-- emphasize asking questions, feeling stupid, saying "I don't know".  Talk about Imposter Syndrome
+- emphasize asking questions, feeling stupid, saying "I don't know".  Talk about Imposter Syndrome.  Remove word "aspiring" from vocabulary
 
 - Don't code along unless instructed to
 
@@ -27,8 +27,8 @@
 ```rb
 instructors = [
   {name: "Paul", mood: "cranky"},
-  {name: "Jake", mood: "happy"},
-  {name: "Melanie", mood: "happy"}
+  {name: "Trevor", mood: "happy"},
+  {name: "Lane", mood: "happy"}
 ]
 ```
 `map` for when you are returning an array of equal size
