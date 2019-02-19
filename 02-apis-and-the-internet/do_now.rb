@@ -7,12 +7,14 @@ def capitalize_with_each(arr)
     arr.each do |character|
         upper_case << character.upcase
     end
+    return arr
 end
 
 def capitalize_with_map(arr)
     arr.map do |char|
         char.upcase
     end
+    return arr
 end
 
 print capitalize_with_each(awesome_characters)
