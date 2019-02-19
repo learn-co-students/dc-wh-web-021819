@@ -131,7 +131,6 @@ def get_player_info(player_name)
   end
 end
 
-
 def num_points_scored(player_name)
   get_player_info(player_name)[:points]
 end
