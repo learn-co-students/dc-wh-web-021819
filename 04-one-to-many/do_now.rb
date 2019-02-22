@@ -1,10 +1,3 @@
-# A puppy is initialized with a cuteness score of 5.  A puppy can raise
-# its cuteness score by 3 points if it gets groomed, and lower its score
-# by 5 points playing in the mud.
-
-# The following code works, but there are some problems.  Refactor this code
-# to improve it.  (The code can be downloaded from your learn.co page under
-# lecture 04)
 require 'pry'
 
 class Puppy
@@ -26,12 +19,21 @@ class Puppy
 
     def play_in_the_mud
       cuteness -= 5
+        @cuteness = new_value
+        if @cuteness > 10
+            @cuteness = 10
+        elsif @cuteness < 1
+            @cuteness = 1
+        end
+    end
+
+    def play_in_the_mud
+        self.cuteness -= 5
     end
 
     def take_a_bath
       self.cuteness += 3
     end
-
 end
 
 fido = Puppy.new("Fido")
