@@ -17,5 +17,17 @@ class User
         Tweet.new(text, self)
     end
 
+    def like_tweet(tweet)
+        Like.new(self, tweet)
+    end
+
+    def liked_tweets
+        # that returns a collection 
+        # of all the tweets this user has liked
+        likes = Like.all.select do |like|
+            like.user == self
+        end
+        likes.collect {|like| like.tweet}
+    end
 end
 

@@ -1,4 +1,4 @@
-class Backer
+ class Backer
 
     attr_accessor :backed_projects, :name
 
@@ -8,8 +8,11 @@ class Backer
     end
 
     def back_project(project)
-        self.backed_projects << project
-        project.backers << self
+        BackerProject.new(self, project)
+    end
+
+    def backed_project_names
+        self.backed_projects.collect {|proj| proj.name}
     end
 end
 
@@ -23,16 +26,25 @@ class Project
     end
 
     def add_backer(backer)
-        backer.backed_projects << self
-        self.backers << backer
+        
+    end
+end
+
+class BackerProjects
+
+    attr_reader :backer, :project
+
+    def initialize(backer, project)
+        @backer, @project = backer, project
     end
 
 end
-
 hoverboard = Project.new('Hoverboard')
+shoes = Project.new("Self lacing shoes")
+
 marty = Backer.new("Marty McFly")
 
 hoverboard.add_backer(marty)
+marty.back_project(shoes)
 
-puts hoverboard.backers.collect {|x| x.name}
-puts marty.backed_projects.collect {|x| x.name}
+print marty.backed_project_names

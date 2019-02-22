@@ -1,23 +1,29 @@
-require "pry"
-require_relative "./tweet.rb"
-require_relative "./user.rb"
-require_relative "./like.rb"
+require_relative "tweet.rb"
+require_relative "user.rb"
+require_relative "like.rb"
+require 'pry'
 
 coffee_dad = User.new("Coffee Dad")
+
+puts coffee_dad.username == "Coffee Dad"
+
+tweet1 = Tweet.new("I need coffee", coffee_dad)
+tweet2 = Tweet.new("I heart coffee", coffee_dad)
+tweet3 = Tweet.new("Life is a meaningless void", coffee_dad)
+puts tweet1.message == "I need coffee"
+puts tweet1.user == coffee_dad
+
+puts Tweet.all == [tweet1, tweet2, tweet3]
+
+puts tweet1.username == "Coffee Dad"
+
 tea_uncle = User.new("Tea Uncle")
+tweet4 = Tweet.new("Tea is great", tea_uncle)
+tweet5 = Tweet.new("Life is a wonderous place", tea_uncle)
 
-tweet1 = Tweet.new("I love coffee", coffee_dad)
-tweet2 = Tweet.new("Making coffee", coffee_dad)
-tweet3 = Tweet.new("I need coffee", coffee_dad)
-tweet4 = Tweet.new("Life is a meaningless void", coffee_dad)
-tweet5 = Tweet.new("I need tea", tea_uncle)
-tweet6 = Tweet.new("I like tea", tea_uncle)
-tweet7 = Tweet.new("Life is a wonderous place", tea_uncle)
+puts coffee_dad.tweets == [tweet1, tweet2, tweet3]
 
-coffee_dad.like_tweet(tweet5)
-coffee_dad.like_tweet(tweet6)
-tea_uncle.like_tweet(tweet1)
-tea_uncle.like_tweet(tweet2)
-binding.pry
+coffee_dad.like_tweet(tweet4)
 
-puts "Yum coffee"
+puts coffee_dad.liked_tweets.include?(tweet4)
+0
