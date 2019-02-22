@@ -21,3 +21,8 @@ tweet4 = Tweet.new("Tea is great", tea_uncle)
 tweet5 = Tweet.new("Life is a wonderous place", tea_uncle)
 
 puts coffee_dad.tweets == [tweet1, tweet2, tweet3]
+
+tweet6 = coffee_dad.post_tweet("This is a new tweet")
+
+puts Tweet.all[-1].message
+puts Tweet.all[-1].username

@@ -9,7 +9,7 @@ class User
     def tweets
         # returns an array of all tweets by this user
 
-        # call Tweet.all and select the tweets with this 
+        # call Tweet.all and select the tweets with this
         # user as the user
 
         Tweet.all.select do |tweet|
@@ -18,7 +18,7 @@ class User
     end
 
     def post_tweet(message)
-
+      tweet = Tweet.new(message, self)
+      tweet 
     end
 end
-
