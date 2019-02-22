@@ -18,7 +18,10 @@ class User
     end
 
     def post_tweet(message)
+        # takes a message
+        # creates a new tweet
+        # adds it to user's tweet collection
+        Tweet.new(message, self)
 
     end
 end
-
