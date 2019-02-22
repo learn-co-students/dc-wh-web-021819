@@ -8,16 +8,15 @@
 
 class Puppy
 
-    attr_reader :name
-    attr_accessor :cuteness
+    attr_reader :name, :cuteness
 
     def initialize(name)
         @name = name
         @cuteness = 5
     end
 
-    def play_in_the_mud
-        @cuteness -= 5
+    def cuteness=(new_value)
+        @cuteness = new_value
         if @cuteness > 10
             @cuteness = 10
         elsif @cuteness < 1
@@ -25,15 +24,14 @@ class Puppy
         end
     end
 
-    def take_a_bath
-        @cuteness += 3
-        if @cuteness > 10
-            @cuteness = 10
-        elsif @cuteness < 1
-            @cuteness = 1
-        end   
-    end    
+    def play_in_the_mud
+        self.cuteness=(self.cuteness - 5)
+    end
 
+    def take_a_bath
+        print self
+        self.cuteness += 3 
+    end    
 end
 
 fido = Puppy.new("Fido")
@@ -42,3 +40,5 @@ fido.take_a_bath
 puts fido.cuteness == 8
 fido.take_a_bath
 puts fido.cuteness == 10
+# fido.cuteness = 20
+# puts fido.cuteness == 10
