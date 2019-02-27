@@ -51,7 +51,8 @@ end
 ```
 
 # Private vs Public methods
-
+ NOTE:  Why doesn't self.human_years work?
+ 
 ```rb
 class Dog
   DOG_YEARS = 7
