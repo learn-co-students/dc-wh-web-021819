@@ -1,4 +1,6 @@
 # Intro to ORMS
+    - Object Relational Mapping
+    - Object Relation Manager
 
 
 ## Objectives
