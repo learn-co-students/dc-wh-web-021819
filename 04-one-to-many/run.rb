@@ -1,23 +1,28 @@
 require_relative "tweet.rb"
 require_relative "user.rb"
-
+require 'pry'
 
 coffee_dad = User.new("Coffee Dad")
 
 puts coffee_dad.username == "Coffee Dad"
 
-tweet1 = Tweet.new("I need coffee", coffee_dad)
-tweet2 = Tweet.new("I heart coffee", coffee_dad)
-tweet3 = Tweet.new("Life is a meaningless void", coffee_dad)
-puts tweet1.message == "I need coffee"
-puts tweet1.user == coffee_dad
+# tweet1 = Tweet.new("I need coffee", coffee_dad)
+# tweet2 = Tweet.new("I heart coffee", coffee_dad)
+# tweet3 = Tweet.new("Life is a meaningless void", coffee_dad)
+# puts tweet1.message == "I need coffee"
+# puts tweet1.user == coffee_dad
 
-puts Tweet.all == [tweet1, tweet2, tweet3]
+# puts Tweet.all == [tweet1, tweet2, tweet3]
 
-puts tweet1.username == "Coffee Dad"
+# puts tweet1.username == "Coffee Dad"
 
 tea_uncle = User.new("Tea Uncle")
-tweet4 = Tweet.new("Tea is great", tea_uncle)
-tweet5 = Tweet.new("Life is a wonderous place", tea_uncle)
+# tweet4 = Tweet.new("Tea is great", tea_uncle)
+# tweet5 = Tweet.new("Life is a wonderous place", tea_uncle)
 
-puts coffee_dad.tweets == [tweet1, tweet2, tweet3]
+# puts coffee_dad.tweets == [tweet1, tweet2, tweet3]
+
+puts coffee_dad.post_tweet("Drinking coffee")
+binding.pry
+
+"hi"

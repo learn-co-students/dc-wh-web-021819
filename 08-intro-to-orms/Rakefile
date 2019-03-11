@@ -1,0 +1,31 @@
+require_relative 'config/environment'
+
+desc "Loads a console"
+task :console do
+    Pry.start
+end
+
+desc "say hello to everyone"
+task :say_hi do 
+    puts "Hello everybody"
+end
+
+desc "set up author database"
+task :set_up_author_db do
+
+    author_sql = 
+        "CREATE TABLE IF NOT EXISTS authors (id INTEGER PRIMARY KEY,
+                                            name TEXT);"
+    DB.execute(author_sql)
+end
+
+desc "set up book database"
+task :set_up_book_db do
+    book_sql = <<-SQL 
+        CREATE TABLE IF NOT EXISTS books (id INTEGER PRIMARY KEY,
+                                          title TEXT,
+                                          author_id INTEGER);
+    SQL
+    DB.execute(book_sql)
+
+end
