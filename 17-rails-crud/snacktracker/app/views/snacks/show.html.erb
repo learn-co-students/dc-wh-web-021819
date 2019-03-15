@@ -5,4 +5,9 @@
 <h4 id="calories">Calories: <%= @snack.calories %></h4>
 <h4>Deliciousness: <%= @snack.deliciousness %></h4>
 
+<%= form_tag @snack, method: "DELETE" do %>
+    <%= submit_tag "I hate this snack" %>
+<% end %>
+
+<%= link_to "Edit this snack", edit_snack_path %>
 <%= link_to "Snacks Index Page", snacks_path %>
