@@ -1,0 +1,10 @@
+<h1>Snacks#index</h1>
+
+<ul class="snack-list">
+    <% @snacks.each do |s| %>
+        <li>
+            <%= link_to s.name, snack_path(s) %>
+        </li>
+    <% end %>
+</ul>
+
