@@ -3,7 +3,7 @@
 <ul class="snack-list">
     <% @snacks.each do |s| %>
         <li>
-            <%= link_to s.name, snack_path(s) %>
+            <%= link_to s.name, retailer_snack_path(s.retailer, s) %>
         </li>
     <% end %>
 </ul>

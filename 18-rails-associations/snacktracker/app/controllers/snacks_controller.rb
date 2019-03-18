@@ -10,7 +10,7 @@ class SnacksController < ApplicationController
   end
 
   def home
-    erb :home
+    render :home
   end
 
   def new
@@ -43,7 +43,7 @@ class SnacksController < ApplicationController
 
   def snack_params
     # strong params
-    params.require(:snack).permit(:name, :deliciousness, :calories)
+    params.require(:snack).permit(:name, :deliciousness, :calories, :retailer_id)
   end
 
   def get_snack

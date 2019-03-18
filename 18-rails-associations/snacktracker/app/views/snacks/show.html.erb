@@ -6,7 +6,7 @@
 <h4>Deliciousness: <%= @snack.deliciousness %></h4>
 
 <%= form_tag @snack, method: "DELETE" do %>
-    <%= submit_tag "I hate this snack" %>
+    <%= submit_tag "Delete" %>
 <% end %>
 
 <%= link_to "Edit this snack", edit_snack_path %>
