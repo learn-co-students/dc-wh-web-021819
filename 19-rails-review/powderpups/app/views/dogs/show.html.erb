@@ -1,0 +1,9 @@
+<h1>Hi my name is <%= @dog.name %></h1>
+<p>
+    I am a <%= @dog.breed %> <br>
+    I race on the team <%= link_to @dog.sled.name, sled_path(@dog.sled.id) %>
+    <%= form_tag dog_path(@dog), method: :delete do %>
+        <%= submit_tag "Set Freeeeee" %>
+    <% end %>
+
+</p>
