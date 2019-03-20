@@ -27,8 +27,21 @@ class SnacksController < ApplicationController
   end
 
   def update
-    @snack.update(snack_params)
-    redirect_to snack_path(@snack)
+    # check for errors
+    if @snack.update(snack_params)
+      # we know update was successful
+      redirect_to snack_path(@snack)
+    else
+      # some kind of error
+      # show the form again
+      # tell the user what the errors were
+      # redirect to edit form
+      # OR
+      # render the edit
+      render :edit
+      # flash[:errors] = @snack.errors.messages
+      # redirect_to "/snacks/#{@snack.id}/edit"
+    end
   end
 
   def destroy

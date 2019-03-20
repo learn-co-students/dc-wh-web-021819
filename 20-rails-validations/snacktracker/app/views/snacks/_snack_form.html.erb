@@ -9,3 +9,8 @@
     <%= f.collection_select(:retailer_id, Retailer.all, :id, :name) %>
     <%= f.submit %>
 <% end %>
+
+<% if flash[:errors].present? || @snack.errors.present? %>
+  <%= flash[:errors] %>
+  <%= @snack.errors.full_messages %>
+<% end %>
