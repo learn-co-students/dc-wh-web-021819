@@ -1,0 +1,25 @@
+// Place all the styles related to the Snacks controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.snack-list {
+    list-style: square
+}
+
+.snack-list a {
+    color: green;
+}
+
+#calories {
+    color: red;
+}
+
+.right-align {
+    float: right;
+    display: inline-block;
+}
+
+form.new_snack {
+    border: 2px solid red;
+    padding: 5px;
+}

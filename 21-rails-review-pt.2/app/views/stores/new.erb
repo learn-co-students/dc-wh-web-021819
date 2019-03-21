@@ -1,0 +1,21 @@
+<h1>Create! Store Form!</h1>
+
+<%= form_for @store do |sean_kelly| %>
+  <%= sean_kelly.label :name %>
+  <%= sean_kelly.text_field :name %>
+
+  <%= sean_kelly.label :city %>
+  <%= sean_kelly.text_field :city %>
+  <br/>
+
+  Magazines:
+  <%= sean_kelly.fields_for :magazines do |sean_magazine| %>
+    <%= sean_magazine.label :title %>
+    <%= sean_magazine.text_field :title %>
+
+    <%= sean_magazine.label :category %>
+    <%= sean_magazine.text_field :category %>
+  <% end %>
+
+  <%= sean_kelly.submit "Create Store" %>
+<% end %>
