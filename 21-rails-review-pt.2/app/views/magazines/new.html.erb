@@ -1,0 +1,16 @@
+<h1>Magazines Form</h1>
+
+<%= form_for @magazine do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :category %>
+  <%= f.text_field :category %>
+
+  <%= f.label :price %>
+  <%= f.text_field :price %>
+
+  <%= f.collection_select :store_id, Store.all, :id, :name, {prompt: "You must Choose, Batman"} %>
+
+  <%= f.submit "Make me a mag" %>
+<% end %>

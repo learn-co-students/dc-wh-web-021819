@@ -1,0 +1,16 @@
+<h1>Store Details, yay</h1>
+
+<%= @store.name %>
+<%= @store.city %>
+
+<ul>
+  <% @store.magazines.each do |mag| %>
+    <li><%= link_to mag.title, magazine_path(mag) %></li>
+  <% end %>
+</ul>
+
+<%= link_to "Go to index", stores_path %>
+
+<%= form_tag "/stores/#{@store.id}", method: :delete do %>
+  Delete me:<%= submit_tag "Begone, shop" %>
+<% end %>
