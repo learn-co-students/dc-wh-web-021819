@@ -1,0 +1,9 @@
+<h1> Hi, do you have a new dog? </h1>
+<%= form_for(@dog) do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :breed %>
+    <%= f.text_field :breed %>
+    <%= f.collection_select :sled_id, Sled.all, :id, :name %>
+    <%= f.submit %>
+<% end %>

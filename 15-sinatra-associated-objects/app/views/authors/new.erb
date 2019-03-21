@@ -1,0 +1,11 @@
+<form action="/authors" method="POST">
+    <input type="text" name="name" placeholder="Author name">
+
+    <% 3.times do %>
+        <div>   
+            <input type="text" name="books[][title]" placeholder="Title">
+            <input type="text" name="books[][snippet]" placeholder="Snippet">
+        </div>
+    <% end %>
+    <input type="submit">
+</form>
