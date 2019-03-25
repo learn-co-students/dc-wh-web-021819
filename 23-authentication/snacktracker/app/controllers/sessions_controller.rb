@@ -5,11 +5,11 @@ class SessionsController < ApplicationController
   def create
     username = params[:username]
     user = User.find_by(username: username)
-    if !user.nil?
+    if user && user.authenticate(params[:password])
         session["user_id"] = user.id
         redirect_to snacks_path
     else
-        flash[:notice] = "No user found with that name"
+        flash[:notice] = "No username/password found with that combination"
         render :new
     end
   end

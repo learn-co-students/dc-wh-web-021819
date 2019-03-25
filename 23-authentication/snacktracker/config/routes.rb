@@ -9,6 +9,6 @@ Rails.application.routes.draw do
   resources :retailers do
     resources :snacks, {only: [:show]}
   end
-
+  resources :users, only: [:new, :create]
   get "/i-heart-snacks", to: "snacks#heart", as: "heart"
 end
