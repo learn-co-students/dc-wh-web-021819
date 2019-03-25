@@ -1,4 +1,8 @@
-<h1>Snacks#index</h1>
+<h1>Snacks for <%= current_user %></h1>
+
+
+<h2><%= current_user %>'s favorite cookie is <%= cookies["my-favorite"] %></h2>
+<h3>but <%= current_user %>'s secret favorite is <%= session["secret-favorite"] %></h3>
 
 <ul class="snack-list">
     <% @snacks.each do |s| %>

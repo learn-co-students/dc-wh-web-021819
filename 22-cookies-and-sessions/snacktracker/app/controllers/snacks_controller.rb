@@ -7,6 +7,8 @@ class SnacksController < ApplicationController
   end
 
   def show
+    cookies["my-favorite"] = "chocolate chip"
+    session["secret-favorite"] = "oatmeal raisin"    
   end
 
   def home
