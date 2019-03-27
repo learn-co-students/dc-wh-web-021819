@@ -1,6 +1,7 @@
 class Snack < ApplicationRecord
     belongs_to :retailer
-
+    has_many :favorites
+    has_many :users, through: :favorites
     # types of the inputs
     # snack name is a string
     # ~ handled for us by rails
@@ -25,6 +26,7 @@ class Snack < ApplicationRecord
 
     # run this validation
     validate :thin_mints_deliciousness
+
 
     def thin_mints_deliciousness
       if name == "Thin Mints" && deliciousness < 1000

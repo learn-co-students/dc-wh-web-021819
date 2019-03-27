@@ -1,9 +1,15 @@
 class SnacksController < ApplicationController
 
     before_action :get_snack, only: [:show, :update, :edit, :destroy]
-
+    # before_action :authorized
+    
   def index
-    @snacks = Snack.all
+    if current_user
+      @snacks = current_user.snacks
+    else
+      @snacks = Snack.all
+    end
+
   end
 
   def show

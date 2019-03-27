@@ -10,5 +10,6 @@ Rails.application.routes.draw do
     resources :snacks, {only: [:show]}
   end
   resources :users, only: [:new, :create]
+  resources :favorites, only: [:new, :create]
   get "/i-heart-snacks", to: "snacks#heart", as: "heart"
 end
