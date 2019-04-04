@@ -1,72 +1,91 @@
-(function () {
-  // Grab needed pre-existing DOM elements
-  const counter = document.querySelector('#counter');
-
-  const plusBtn = document.getElementById('+');
+document.addEventListener('DOMContentLoaded', function() {
+  //grab pre-existing elements
+  const counter = document.getElementById('counter');
   const minusBtn = document.getElementById('-');
+  const plusBtn = document.getElementById('+');
 
-  const likes = {}; // keeps track of each numbers "likes"
+  const likes = {};
   const likeBtn = document.getElementById('<3');
-  const likesUL = document.querySelector('.likes');
+  const likeList = document.querySelector('.likes');
 
-  let pause = false;
+  let paused = false;
   const pauseBtn = document.getElementById('pause');
 
+  const commentForm = document.querySelector('#comment-form');
   const commentDiv = document.querySelector('#list');
-  const commentForm = document.querySelector('#comment-form')
 
-  // add event listeners & intervals
+  // add event listeners and set intervals
   let countInterval = setInterval(incrementCounter, 1000);
-  likeBtn.addEventListener('click', likeNumber)
-  plusBtn.addEventListener('click', incrementCounter);
-  minusBtn.addEventListener('click', decrementCounter);
-  pauseBtn.addEventListener('click', toggleCounterInterval)
+  // minusBtn.addEventListener('click', decrementCounter);
+  // plusBtn.addEventListener('click', incrementCounter);
+  // likeBtn.addEventListener('click', likeNumber);
+  document.addEventListener('click', clickHandler)
+  pauseBtn.addEventListener('click', pause);
   commentForm.addEventListener('submit', addComment)
 
-  // functions
-  function toggleCounterInterval() {
-    pause = !pause
-    pause ? pauseBtn.innerText = 'resume' : pauseBtn.innerText = 'pause';
-  }
-
+  // function
   function incrementCounter() {
-    if (!pause) {
-      counter.innerText = parseInt(counter.innerText) + 1;
-    }
+    counter.innerText++;
   }
-
   function decrementCounter() {
-    if (!pause) {
-      counter.innerText = parseInt(counter.innerText) - 1
+    counter.innerText--;
+  }
+
+  function clickHandler(e) {
+    if (e.target.tagName === 'BUTTON') {
+      console.log(e.target.id);
+      switch (e.target.id) {
+        case '+':
+          incrementCounter();
+          break;
+        case '-':
+          decrementCounter();
+          break;
+        default:
+          break;
+      }
     }
   }
 
-  // "Like" current counter number
   function likeNumber() {
-    if (!pause) {
-      const number = counter.innerText
+    const number = counter.innerText;
+    if (likes[number]) {
+      likes[number]++
+      const li = document.getElementById(number);
+      li.innerText = `${number} has been liked ${likes[number]} times.`;
+    } else {
+      likes[number] = 1;
+      const li = document.createElement('li');
+      li.id = number;
+      li.innerText = `${number} has been liked ${likes[number]} time.`;
+      likeList.appendChild(li)
+    }
+  }
 
-      if (!likes[number]) {
-        likes[number] = 1;
-        const li = document.createElement('li');
-        li.setAttribute('id', number)
-        li.innerText = `${number} has been liked 1 time!`
-        likesUL.appendChild(li)
-      } else {
-        likes[number] += 1
-        const li = document.getElementById(number)
-        li.innerText = `${number} has been liked ${likes[number]} times!`
-      }
+  function pause() {
+    likeBtn.disabled = !likeBtn.disabled;
+    minusBtn.disabled = !minusBtn.disabled;
+    plusBtn.disabled = !plusBtn.disabled;
+    paused = !paused
+
+    if (paused) {
+      clearInterval(countInterval)
+      pauseBtn.innerText = 'resume'
+    } else {
+      countInterval = setInterval(incrementCounter, 1000)
+      pauseBtn.innerText = 'pause'
     }
   }
 
   function addComment(e) {
     e.preventDefault();
+    console.log('rip arrow functions');
 
     const comment = commentForm.querySelector('input').value;
     commentForm.querySelector('input').value = '';
-    const commentEl = document.createElement('p');
-    commentEl.innerText = comment;
-    commentDiv.appendChild(commentEl)
+    const seanKelly = document.createElement('p');
+    seanKelly.innerText = comment;
+    commentDiv.appendChild(seanKelly);
   }
-})()
+
+})
