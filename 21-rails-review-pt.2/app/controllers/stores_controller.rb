@@ -4,6 +4,7 @@ class StoresController < ApplicationController
   end
 
   def show
+    byebug
     @store = Store.find(params[:id])
   end
 
