@@ -67,7 +67,7 @@ body:
 
 When a user clicks on a toy's like button, two things should happen:
   * Conditionally increase the toy's like count
-  * Send a patch request to the server at http://localhost:3000/toys/:id updating the number of likes that the specific toy has
+  * Send a PATCH request to the server at *http://localhost:3000/toys/:id* updating the number of likes that the specific toy has
   * Headers and body are provided below. If your request isn't working, make sure your header and keys match the documentation.
   
 ```
