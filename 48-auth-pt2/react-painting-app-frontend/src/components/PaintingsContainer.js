@@ -1,8 +1,8 @@
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-import PaintingsList from './PaintingsList';
-import PaintingsNew from './PaintingsNew';
-import PaintingShow from './PaintingShow';
+import React from "react";
+import { Route, Switch } from "react-router-dom";
+import PaintingsList from "./PaintingsList";
+import PaintingsNew from "./PaintingsNew";
+import PaintingShow from "./PaintingShow";
 
 class PaintingsContainer extends React.Component {
   constructor() {
@@ -17,7 +17,7 @@ class PaintingsContainer extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3001/api/v1/paintings/')
+    fetch("http://localhost:3001/api/v1/paintings/")
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -27,9 +27,28 @@ class PaintingsContainer extends React.Component {
   }
 
   handleDelete(id) {
-    const updatedState = this.state.paintings.filter(pntg => pntg.id !== id);
+    // TODO: send authenticated request to delete this painting
+    let token = localStorage.getItem("token");
+    if (token) {
+      fetch(`http://localhost:3001/api/v1/paintings/${id}`, {
+        headers: {
+          Accept: "application/json",
+          Authorization: `Bearer ${token}`
+        },
+        method: "DELETE"
+      })
+        .then(res => res.json())
+        .then(res => {
+          console.log(res);
+          if (res.success) {
+            const updatedState = this.state.paintings.filter(
+              pntg => pntg.id !== id
+            );
 
-    this.setState({ paintings: updatedState });
+            this.setState({ paintings: updatedState });
+          }
+        });
+    }
   }
 
   handleVote(id) {
@@ -49,7 +68,7 @@ class PaintingsContainer extends React.Component {
   }
 
   render() {
-    console.log('render method of Container', this.state);
+    console.log("render method of Container", this.state);
     return (
       <div>
         <Switch>
@@ -60,7 +79,7 @@ class PaintingsContainer extends React.Component {
               const painting = this.state.paintings.find(
                 pntg => pntg.slug === props.match.params.slug
               );
-              console.log('painting', painting);
+              console.log("painting", painting);
 
               return painting ? (
                 <PaintingShow painting={painting} />
